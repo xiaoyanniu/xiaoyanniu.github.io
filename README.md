@@ -1,15 +1,49 @@
 ## Website Performance Optimization portfolio project
-### Made the following changes to file 'index.html':
-. Added media="print" to the css/print link to minimize use of render blocking resources
+
+### Changes in the 2nd commit to file 'Views/js/main.js'
+• On line 423, added changeSliderLabel(size);
+• On line 427, change document.querySelector("#randomPizzas") to document.getElementById("randomPizzas").
+• On line 453, change document.querySelectorAll(".randomPizzaContainer") to document.getElementsByClassName("randomPizzaContainer").
+• On line 456, remove the size parameter in the changePizzaSizes() function.
+• On line 461, remove requestAnimationFrame(changePizzaSizes(size));
+• On line 464, change requestAnimationFrame(changePizzaSizes(size)); to changePizzaSizes(size);
+• On line 478, change the number back to 100
+• On line 531, change document.querySelectorAll(".mover") to document.getElementsByClassName("mover").
+• From line 532 to line 541, revised the code based on the first reviewer. 
+• On line 561, change document.querySelector("#movingPizzas1") to document.getElementById("movingPizzas1")
+• On line 562, change the number to 24
+
+### Changes in the 2nd commit to file 'index.html'
+• Inlined the content in css/style.css and removed <link href="css/style.css" rel="stylesheet">
+
+### Changes in the 2nd commit to file 'Views/pizza.html'
+• Inlined the content in css/style.css and removed <link href="css/style.css" rel="stylesheet">
+
+### In the 1st commit, made the following changes to file 'index.html':
+• Added media="print" to the css/print link to minimize use of render blocking resources
 • Added async attribute to the google analytics script
 • Removed the link to google web fonts (already available in style.css)
 • Optimized and resized the pizzeria.jpg for the index.html to pizzeria_small.png
 • Removed the links to the three small images and used the images saved in 'img' folder
 • Moved Google Analytics out of the head and put it at the bottom
 
-### Made the following changes to file css/style.css
-. Added will-change property to html element
+### In the 1st commit, made the following changes to file 'css/style.css'
+• Added will-change property to html element
 • Took the mobile media query out of the style.css and have it in the new file style-mobile.css
+
+### In the 1st commit, changes to file 'Views/js/main.js'
+• Took document.querySelector("#pizzaSize") out from function changeSliderLabel(size) and assign it to variable 'pizzaSz'
+• Took document.querySelectorAll(".randomPizzaContainer") out from function changePizzaSizes(size) and assign it to variable 'randomPizza'
+• Changed image 'pizzeria.jpg' to be 'pizzeria.png'
+• Moved pizzasDiv = document.getElementById("randomPizzas") out of the for loop.
+• Reduced the pizzas generated when the page loads from 100 to 20.
+• Reduced the floating pizzas from 200 to 20.
+• Added requestAnimationFrame to updatePositions() in a couple of places.
+• Added requestAnimationFrame to changeSliderLabel(size).
+
+### In the 1st commit, changes to file 'Views/css/style.css'
+• Added will-change property to .mover element.
+• Added will-change property to the html element.
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 

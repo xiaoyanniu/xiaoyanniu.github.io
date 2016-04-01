@@ -420,11 +420,11 @@ var resizePizzas = function(size) {
         console.log("bug in changeSliderLabel");
     }
   }
-
+  changeSliderLabel(size);
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // Optional TODO: change to 3 sizes? no more xl?
@@ -450,18 +450,18 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   //#Student: take document.querySelectorAll(".randomPizzaContainer") out of the for loop.
-  var pizzaRandom = document.querySelectorAll(".randomPizzaContainer");
+  var pizzaRandom = document.getElementsByClassName("randomPizzaContainer");
   var dx = determineDx(pizzaRandom[0], size);
   var newwidth = (pizzaRandom[0].offsetWidth + dx) + 'px';
-  function changePizzaSizes(size) {
+  function changePizzaSizes() {
     for (var i = 0; i < pizzaRandom.length; i++) {
       pizzaRandom[i].style.width = newwidth;
     }
     //#Student: add requestAnimationFrame
-    requestAnimationFrame(changePizzaSizes(size));
+
   }
-  //#Student: add requestAnimatonFrame
-  requestAnimationFrame(changePizzaSizes(size));
+
+  changePizzaSizes();
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
@@ -475,7 +475,7 @@ window.performance.mark("mark_start_generating"); // collect timing data
 // This for-loop actually creates and appends all of the pizzas when the page loads
 // #Student: take document.getElementByID("randomPizzas") out of the for loop
 var pizzasDiv = document.getElementById("randomPizzas");
-for (var i = 2; i < 20; i++) {
+for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -528,12 +528,15 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   // #Student: pull currentScrollY out of for loop and fall back to latest known position
-  var items = document.querySelectorAll('.mover');
-  var currentScrollY = latestKnownScrollY / 1250;
+  var items = document.getElementsByClassName('mover');
+  var phaseArray = [];
+  var top = document.body.scrollTop / 1250;
+  for (var i = 0; i < 5; i++) {
+    phaseArray.push(Math.sin(top + i));
+  }
   var phase;
   for (var i = 0; i < items.length; i++) {
-    // #Student: insert currentScrollY variable
-    phase = Math.sin(currentScrollY + (i % 5));
+    phase = phaseArray[i % 5];
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -555,8 +558,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   //#Student: take document.querySelector("movingPizzas1") out of the for loop.
-  var pizzaNum = document.querySelector("#movingPizzas1");
-  for (var i = 0; i < 20; i++) {
+  var pizzaNum = document.getElementById("movingPizzas1");
+  for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
