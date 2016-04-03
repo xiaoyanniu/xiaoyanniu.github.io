@@ -1,5 +1,10 @@
 ## Website Performance Optimization portfolio project
 
+### Changes in the 3rd commit to file 'index.html'
+• From line 55 - line 60, inlined the content in css/style-mobile.
+• On line 68, reduced the size of image 'profilepic.jpg' from 14k to 8k.
+• On line 98, replace image 'pizzeria_small.png' (39kb) with 'pizzeria_small.jpg' (10k)
+
 ### Changes in the 2nd commit to file 'Views/js/main.js'
 • On line 423, added changeSliderLabel(size);
 • On line 427, change document.querySelector("#randomPizzas") to document.getElementById("randomPizzas").
